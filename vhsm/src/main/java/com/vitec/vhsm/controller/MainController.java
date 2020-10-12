@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,8 +27,16 @@ public class MainController {
     @GetMapping("/index")
     public String index(Model model){
         List<Hsmlog> list = hsmService.findCmdProcessingRate();
+        List<String> x_data = new ArrayList<>();
+        List<String> y_data = new ArrayList<>();
+
+        for(int i=0; i<list.size(); i++){
+            x_data.add(list.get(i).getSys_date());
+            y_data.add(list.get(i).getLoad());
+        }
         model.addAttribute("user_id", getUserId());
-        model.addAttribute("data", list);
+        model.addAttribute("x_data", x_data);
+        model.addAttribute("y_data", y_data);
         return "index";
     }
 
