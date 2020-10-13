@@ -34,25 +34,26 @@
     </div>
     <div class="board" id="hsminfo">
       <h4>HSM 장비 신규 등록</h4>
+      <script src="registrations.js"></script>
       <div class="registercontainer">
-        <form>
+        <form onsubmit="return hsmcheckbeforesubmit();" action="./infohsm" method="post">
           <!--실제 사용시에는 form 안에 action="./infohsm" method="post" 추가할것. 임시 파일에선 삭제.-->
           <table>
             <tr>
               <td>HSM 유형</td>
-              <td><input type="text" id="adminId" name="adminId"></td>
+              <td><input type="text" id="hsmtype" name="hsmtype"></td>
             </tr>
             <tr>
               <td>HSM IP</td>
-              <td><input type="password" id="password" name="password"></td>
+              <td><input type="text" id="hsmip" name="hsmip"></td>
             </tr>
             <tr>
               <td>서버 IP</td>
-              <td><input type="text" id="name" name="name"></td>
+              <td><input type="text" id="serverip" name="serverip"></td>
             </tr>
             <tr>
               <td>서버 PORT</td>
-              <td><input type="text" id="department" name="department"></td>
+              <td><input type="text" id="serverport" name="serverport"></td>
             </tr>
             <tr>
               <td>사용 여부</td>
@@ -69,9 +70,12 @@
           </table>
           <!-- 그 외  실제 구현 시 승인한 사람과 승인 날짜는 각각 자동으로 admin / 시스템 시간이 들어갈 수 있게하고 별도 입력 x -->
           <br>
+          <button type="submit" class="tablebutton">등록</button>
+          <!--
+          등록 기능을 해제할 경우 아래 코드를 사용. 권한 없음 팝업창이 뜸.
           <script src="notauthourized.js"></script>
           <button onClick="alerting()" class="tablebutton">등록</button>
-          <!-- 기능 구현 완료된 후 스크립트 수정 필요. 버튼 타입 섭밋 type="submit" 으로 수정.-->
+         -->
         </form>
       </div>
       </div>
